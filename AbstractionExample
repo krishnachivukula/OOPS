@@ -1,0 +1,74 @@
+package lambdaexpression;
+
+public abstract class Employee {
+
+	private String name;
+	private int paymentPerHour;
+
+	public Employee(String name, int paymentPerHour) {
+		this.name = name;
+		this.paymentPerHour = paymentPerHour;
+	}
+
+	public abstract int calculateSalaray();
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getPaymentPerHour() {
+		return paymentPerHour;
+	}
+
+	public void setPaymentPerHour(int paymentPerHour) {
+		this.paymentPerHour = paymentPerHour;
+	}
+
+}
+
+class contractor extends Employee {
+
+	private int workingHours;
+
+	public contractor(String name, int paymentPerHour, int workingHours) {
+		super(name, paymentPerHour);
+		this.workingHours = workingHours;
+	}
+
+	@Override
+	public int calculateSalaray() {
+		return getPaymentPerHour() * workingHours;
+	}
+}
+
+class FullTimeEmployee extends Employee {
+
+	public FullTimeEmployee(String name, int paymentPerHour) {
+		super(name, paymentPerHour);
+	}
+
+	@Override
+	public int calculateSalaray() {
+		return getPaymentPerHour() * 8;
+	}
+}
+
+class abstractionDemo {
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Employee contractor = new contractor("Contractor", 50, 8);
+
+		Employee fulltimeEmployee = new FullTimeEmployee("FT", 80);
+
+		System.out.println("Contractor Salary is:" + contractor.calculateSalaray());
+		System.out.println("FullTime Salary is:" + fulltimeEmployee.calculateSalaray());
+
+	}
+}
+
