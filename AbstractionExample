@@ -29,7 +29,6 @@ public abstract class Employee {
 	}
 
 }
-
 class contractor extends Employee {
 
 	private int workingHours;
